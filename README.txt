@@ -4,4 +4,5 @@ This project was created for part 10 of the full-stack open course offered by th
 
 ## Exercises
 
-✅ Setting up the environement
+✅ 10.1 Setting up the environment
+✅ 10.2 Installed ESLint
