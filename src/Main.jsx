@@ -1,7 +1,7 @@
 import Constants from 'expo-constants'
 import { StyleSheet, View } from 'react-native'
-import RepositoryList from './RepositoryList'
-import Text from './components/Text'
+import RepositoryList from './components/RepositoryList'
+import Text from './components/ui/Text'
 
 const styles = StyleSheet.create({
   body: {

@@ -1,5 +1,5 @@
 import { FlatList, View, StyleSheet, Image } from 'react-native'
-import Text from './components/Text'
+import Text from './ui/Text'
 
 const styles = StyleSheet.create({
   separator: {
