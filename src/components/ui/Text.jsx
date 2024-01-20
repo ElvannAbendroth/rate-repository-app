@@ -30,9 +30,11 @@ import { cva } from 'class-variance-authority'
 const textVariants = cva(['text-foreground'], {
   variants: {
     variant: {
+      header: 'text-lg font-bold',
+      subheader: 'text-md font-bold',
+      large: 'text-lg',
       body: 'text-md',
-      small: 'text-sm text-muted',
-      heading: 'text-xl font-bold',
+      small: 'text-sm',
     },
   },
   defaultVariants: {

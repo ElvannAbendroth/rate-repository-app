@@ -1,17 +1,10 @@
 import { FlatList, View, StyleSheet, Image } from 'react-native'
 import Text from './ui/Text'
+import { GitFork, MessageSquare, Star, Trophy } from 'lucide-react-native'
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
-  },
-  tinyLogo: {
-    width: 40,
-    height: 40,
-  },
-  logo: {
-    width: 66,
-    height: 58,
   },
 })
 
@@ -67,34 +60,64 @@ const ItemSeparator = () => <View style={styles.separator} />
 const RepositoryList = () => {
   return (
     <FlatList
-      className="flex flex-col pt-3 "
+      className="flex flex-col pt-3 px-4 "
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
-        <View className="bg-slate-800 rounded-md shadow-md p-4">
-          <View className="flex flex-row gap-4 mb-3 items-center">
+        <View className="bg-foreground/[2%] rounded-lg shadow-md p-4">
+          <View className="flex flex-row gap-3 mb-5 items-center">
             <Image
               style={styles.tinyLogo}
-              className="rounded-full"
+              className="rounded-full h-10 w-10"
               source={{
-                uri: 'https://media.istockphoto.com/id/1167753373/vector/woman-avatar-isolated-on-white-background-vector-illustration-for-your-design.jpg?s=612x612&w=0&k=20&c=Y2a_YXRjZ3bXa3Jn2EStSXv7hJly0uEkdlWk4tdbI6U=',
+                uri: item.ownerAvatarUrl,
               }}
             />
             <Text className="font-bold">{item.fullName}</Text>
           </View>
 
-          <Text className="mb-5">{item.description}</Text>
-          <View variant="small" className="flex flex-row flex-wrap line gap-3 mb-5">
-            <Text variant="small" className="items-center">
-              💻 {item.language}
-            </Text>
-            <Text variant="small">⭐ {item.stargazersCount}</Text>
-            <Text variant="small">🍴 {item.forksCount}</Text>
+          <Text variant={'large'} className="mb-4">
+            {item.description}
+          </Text>
+          <View className="flex flex-row line mb-5 items-center">
+            <View className="rounded-full h-2 w-2 bg-primary"></View>
+            <Text className=" py-1 px-2 text-muted">{item.language}</Text>
           </View>
 
-          <View className="flex flex-row flex-wrap line gap-3">
-            <Text variant="small">💬 {item.reviewCount}</Text>
-            <Text variant="small">✅ {item.ratingAverage}</Text>
+          <View className="flex flex-row justify-around flex-wrap line gap-3">
+            <View className="flex justify-center">
+              <Text variant="" className="mb-2 font-bold">
+                {(item.stargazersCount / 1000).toFixed(1)}k
+              </Text>
+              <View className="flex items-center text-center">
+                <Star className="text-muted " size={18} />
+              </View>
+            </View>
+            <View className="flex">
+              <Text variant="" className="mb-2 font-bold">
+                {(item.forksCount / 1000).toFixed(1)}k
+              </Text>
+              <View className="flex items-center text-center">
+                <GitFork className="text-muted " size={18} />
+              </View>
+            </View>
+            <View className="flex">
+              <Text variant="" className="mb-2 font-bold">
+                {item.reviewCount}
+              </Text>
+              <View className="flex items-center text-center">
+                <MessageSquare className="text-muted " size={18} />
+              </View>
+            </View>
+            <View className="flex">
+              <Text variant="" className="mb-2 font-bold">
+                {' '}
+                {item.ratingAverage}
+              </Text>
+              <View className="flex items-center text-center">
+                <Trophy className="text-muted " size={18} />
+              </View>
+            </View>
           </View>
         </View>
       )}
