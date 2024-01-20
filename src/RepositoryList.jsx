@@ -1,8 +1,17 @@
-import { FlatList, View, StyleSheet, Text } from 'react-native'
+import { FlatList, View, StyleSheet, Image } from 'react-native'
+import Text from './components/Text'
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
+  },
+  tinyLogo: {
+    width: 40,
+    height: 40,
+  },
+  logo: {
+    width: 66,
+    height: 58,
   },
 })
 
@@ -58,18 +67,35 @@ const ItemSeparator = () => <View style={styles.separator} />
 const RepositoryList = () => {
   return (
     <FlatList
-      className="flex flex-col pt-3"
+      className="flex flex-col pt-3 "
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
-        <View className="bg-slate-100 p-4">
-          <Text className="">Full Name: {item.fullName}</Text>
-          <Text className="">Description: {item.description}</Text>
-          <Text className="">Language: {item.language}</Text>
-          <Text className="">Stars: {item.stargazersCount}</Text>
-          <Text className="">Forks: {item.forksCount}</Text>
-          <Text className="">Reviews: {item.reviewCount}</Text>
-          <Text className="">Rating: {item.ratingAverage}</Text>
+        <View className="bg-slate-800 rounded-md shadow-md p-4">
+          <View className="flex flex-row gap-4 mb-3 items-center">
+            <Image
+              style={styles.tinyLogo}
+              className="rounded-full"
+              source={{
+                uri: 'https://media.istockphoto.com/id/1167753373/vector/woman-avatar-isolated-on-white-background-vector-illustration-for-your-design.jpg?s=612x612&w=0&k=20&c=Y2a_YXRjZ3bXa3Jn2EStSXv7hJly0uEkdlWk4tdbI6U=',
+              }}
+            />
+            <Text className="font-bold">{item.fullName}</Text>
+          </View>
+
+          <Text className="mb-5">{item.description}</Text>
+          <View variant="small" className="flex flex-row flex-wrap line gap-3 mb-5">
+            <Text variant="small" className="items-center">
+              💻 {item.language}
+            </Text>
+            <Text variant="small">⭐ {item.stargazersCount}</Text>
+            <Text variant="small">🍴 {item.forksCount}</Text>
+          </View>
+
+          <View className="flex flex-row flex-wrap line gap-3">
+            <Text variant="small">💬 {item.reviewCount}</Text>
+            <Text variant="small">✅ {item.ratingAverage}</Text>
+          </View>
         </View>
       )}
       // other props
