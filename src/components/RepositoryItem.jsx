@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   root: {
     backgroundColor: theme.colors.foreground + '05', // sets to 2% opacity
-    rounded: theme.borderRadius.lg,
+    borderRadius: theme.borderRadius.lg,
     padding: 1 * REM,
   },
 })

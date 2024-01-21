@@ -1,5 +1,5 @@
 import { FlatList, View, StyleSheet } from 'react-native'
-import RepositoryItem from './RepositoryItem'
+import RepositoryItem from '../components/RepositoryItem'
 import theme from '../utils/theme'
 
 const REM = theme.fontSizes.body
@@ -8,8 +8,6 @@ const styles = StyleSheet.create({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: 0.75 * REM,
-    paddingHorizontal: 1 * REM,
   },
   separator: {
     height: 0.75 * REM,
@@ -68,7 +66,6 @@ const ItemSeparator = () => <View style={styles.separator} />
 const RepositoryList = () => {
   return (
     <FlatList
-      className="flex flex-col pt-3 px-4 "
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem entry={item} />}
