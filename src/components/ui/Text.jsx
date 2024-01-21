@@ -43,5 +43,3 @@ const Text = ({ variant, muted, bold, style, ...props }) => {
 }
 
 export default Text
-
-//test
