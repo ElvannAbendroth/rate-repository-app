@@ -1,10 +1,18 @@
-import { FlatList, View, StyleSheet, Image } from 'react-native'
-import Text from './ui/Text'
-import { GitFork, MessageSquare, Star, Trophy } from 'lucide-react-native'
+import { FlatList, View, StyleSheet } from 'react-native'
+import RepositoryItem from './RepositoryItem'
+import theme from '../utils/theme'
+
+const REM = theme.fontSizes.body
 
 const styles = StyleSheet.create({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: 0.75 * REM,
+    paddingHorizontal: 1 * REM,
+  },
   separator: {
-    height: 10,
+    height: 0.75 * REM,
   },
 })
 
@@ -63,64 +71,7 @@ const RepositoryList = () => {
       className="flex flex-col pt-3 px-4 "
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => (
-        <View className="bg-foreground/[2%] rounded-lg shadow-md p-4">
-          <View className="flex flex-row gap-3 mb-5 items-center">
-            <Image
-              style={styles.tinyLogo}
-              className="rounded-full h-10 w-10"
-              source={{
-                uri: item.ownerAvatarUrl,
-              }}
-            />
-            <Text className="font-bold">{item.fullName}</Text>
-          </View>
-
-          <Text variant={'large'} className="mb-4">
-            {item.description}
-          </Text>
-          <View className="flex flex-row line mb-5 items-center">
-            <View className="rounded-full h-2 w-2 bg-primary"></View>
-            <Text className=" py-1 px-2 text-muted">{item.language}</Text>
-          </View>
-
-          <View className="flex flex-row justify-around flex-wrap line gap-3">
-            <View className="flex justify-center">
-              <Text variant="" className="mb-2 font-bold">
-                {(item.stargazersCount / 1000).toFixed(1)}k
-              </Text>
-              <View className="flex items-center text-center">
-                <Star className="text-muted " size={18} />
-              </View>
-            </View>
-            <View className="flex">
-              <Text variant="" className="mb-2 font-bold">
-                {(item.forksCount / 1000).toFixed(1)}k
-              </Text>
-              <View className="flex items-center text-center">
-                <GitFork className="text-muted " size={18} />
-              </View>
-            </View>
-            <View className="flex">
-              <Text variant="" className="mb-2 font-bold">
-                {item.reviewCount}
-              </Text>
-              <View className="flex items-center text-center">
-                <MessageSquare className="text-muted " size={18} />
-              </View>
-            </View>
-            <View className="flex">
-              <Text variant="" className="mb-2 font-bold">
-                {' '}
-                {item.ratingAverage}
-              </Text>
-              <View className="flex items-center text-center">
-                <Trophy className="text-muted " size={18} />
-              </View>
-            </View>
-          </View>
-        </View>
-      )}
+      renderItem={({ item }) => <RepositoryItem entry={item} />}
       // other props
     />
   )

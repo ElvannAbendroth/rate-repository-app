@@ -1,49 +1,45 @@
-import { Text as NativeText } from 'react-native'
+import { Text as NativeText, StyleSheet } from 'react-native'
+import theme from '../../utils/theme'
 
-import { cn } from '../../utils/cn'
-import { cva } from 'class-variance-authority'
-
-// const styles = StyleSheet.create({
-//   text: {
-//     color: theme.colors.textPrimary,
-//     fontSize: theme.fontSizes.body,
-//     fontFamily: theme.fonts.main,
-//     fontWeight: theme.fontWeights.normal,
-//   },
-//   colorTextSecondary: {
-//     color: theme.colors.textSecondary,
-//   },
-//   colorPrimary: {
-//     color: theme.colors.primary,
-//   },
-//   fontSizeSubheading: {
-//     fontSize: theme.fontSizes.subheading,
-//   },
-//   fontSizeHeading: {
-//     fontSize: theme.fontSizes.heading,
-//   },
-//   fontWeightBold: {
-//     fontWeight: theme.fontWeights.bold,
-//   },
-// })
-
-const textVariants = cva(['text-foreground'], {
-  variants: {
-    variant: {
-      header: 'text-lg font-bold',
-      subheader: 'text-md font-bold',
-      large: 'text-lg',
-      body: 'text-md',
-      small: 'text-sm',
-    },
+const styles = StyleSheet.create({
+  base: {
+    color: theme.colors.foreground,
+    fontSize: theme.fontSizes.body,
+    fontFamily: theme.fonts.main,
+    fontWeight: theme.fontWeights.normal,
   },
-  defaultVariants: {
-    variant: 'body',
+  subheader: {
+    fontSize: theme.fontSizes.subheading,
+    fontWeight: theme.fontWeights.bold,
+  },
+  header: {
+    fontSize: theme.fontSizes.heading,
+    fontWeight: theme.fontWeights.bold,
+  },
+  large: {
+    fontSize: theme.fontSizes.subheading,
+  },
+  fontWeightBold: {
+    fontWeight: theme.fontWeights.bold,
+  },
+  muted: {
+    color: theme.colors.muted,
   },
 })
 
-const Text = ({ variant, className, ...props }) => {
-  return <NativeText className={cn(textVariants({ variant, className }))} {...props} />
+const Text = ({ variant, muted, bold, style, ...props }) => {
+  const textStyle = [
+    styles.base,
+    variant === 'header' && styles.header,
+    variant === 'subheader' && styles.subheader,
+    variant === 'large' && styles.large,
+    variant === 'base' && styles.body,
+    bold && styles.fontWeightBold,
+    muted && styles.muted,
+    style,
+  ]
+
+  return <NativeText style={textStyle} {...props} />
 }
 
 export default Text

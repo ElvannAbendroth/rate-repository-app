@@ -1,21 +1,31 @@
 import { View, StyleSheet, Pressable, Alert } from 'react-native'
 import Constants from 'expo-constants'
 import Text from './ui/Text'
+import theme from '../utils/theme'
+
+const REM = theme.fontSizes.body
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     paddingTop: Constants.statusBarHeight,
-    // ...
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 1 * REM,
+    backgroundColor: theme.colors.background,
+    borderBottomWidth: 1,
+    borderColor: theme.colors.foreground + '0A', //05 === 4% opacity
   },
+  tabText: {
+    paddingVertical: 1 * REM,
+  },
+
   // ...
 })
 
 const AppBar = () => {
   return (
-    <View
-      style={styles.container}
-      className="flex flex-row justify-around  px-4 bg-grey-900 border-b-[1px] border-foreground/[4%]"
-    >
+    <View style={styles.root}>
       <AppBarTab label="Repositories" />
       <AppBarTab label="Liked" />
       <AppBarTab label="Settings" />
@@ -28,7 +38,7 @@ export default AppBar
 const AppBarTab = ({ label }) => {
   return (
     <Pressable onPress={() => Alert.alert('You pressed the text!')}>
-      <Text variant="subheader" className="py-4">
+      <Text bold style={styles.tabText}>
         {label}
       </Text>
     </Pressable>

@@ -1,14 +1,16 @@
+const REM = 14
+
 const theme = {
   colors: {
-    textPrimary: '#fff',
-    textSecondary: '#94a3b8', //slate-400
-    primary: '#06b6d4', //cyan-500
-    background: '#0f172a', //slate-900
+    foreground: '#fafafa', //zinc-50
+    primary: '#3b82f6', //blue-500
+    muted: '#94a3b8', //slate-400
+    background: '#18181b', //zinc-900
   },
   fontSizes: {
-    body: 14,
-    subheading: 16,
-    heading: 18,
+    body: 1 * REM,
+    subheading: 1.25 * REM,
+    heading: 1.5 * REM,
   },
   fonts: {
     main: 'System',
@@ -16,6 +18,9 @@ const theme = {
   fontWeights: {
     normal: '400',
     bold: '700',
+  },
+  borderRadius: {
+    lg: 0.5 * REM,
   },
 }
 
