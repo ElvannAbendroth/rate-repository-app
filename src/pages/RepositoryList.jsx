@@ -5,10 +5,7 @@ import theme from '../utils/theme'
 const REM = theme.fontSizes.body
 
 const styles = StyleSheet.create({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+  root: {},
   separator: {
     height: 0.75 * REM,
   },
