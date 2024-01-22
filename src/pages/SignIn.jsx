@@ -1,8 +1,9 @@
-import { Alert, Pressable, StyleSheet, TextInput, View } from 'react-native'
+import { Pressable, StyleSheet, View } from 'react-native'
 import Text from '../components/ui/Text'
-import { Formik, useField } from 'formik'
+import { Formik } from 'formik'
 import theme from '../utils/theme'
 import FormikTextInput from '../components/ui/FormikTextInput'
+import * as yup from 'yup'
 
 const REM = theme.fontSizes.body
 const styles = StyleSheet.create({
@@ -44,16 +45,21 @@ const SignIn = () => {
   )
 }
 
+const validationSchema = yup.object().shape({
+  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required'),
+})
+
 const FormikContext = () => {
   const onSubmit = values => {
-    const username = parseFloat(values.username)
-    const password = parseFloat(values.password)
+    // const username = parseFloat(values.username)
+    // const password = parseFloat(values.password)
 
     console.log(values)
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
       {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
   )

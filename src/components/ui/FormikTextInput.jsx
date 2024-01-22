@@ -5,9 +5,16 @@ import TextInput from './TextInput'
 import Text from './Text'
 import theme from '../../utils/theme'
 
+const REM = theme.fontSizes.body
+
 const styles = StyleSheet.create({
   errorText: {
-    marginTop: 5,
+    paddingBottom: 1.5 * REM,
+    color: theme.colors.danger,
+  },
+  errorInput: {
+    borderColor: theme.colors.danger,
+    borderLeftWidth: 2,
   },
 })
 
@@ -18,6 +25,7 @@ const FormikTextInput = ({ name, ...props }) => {
   return (
     <>
       <TextInput
+        style={showError && styles.errorInput}
         onChangeText={value => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
         value={field.value}

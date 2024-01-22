@@ -3,9 +3,11 @@ const REM = 14
 const theme = {
   colors: {
     foreground: '#fafafa', //zinc-50
-    primary: '#3b82f6', //blue-500
-    muted: '#94a3b8', //slate-400
+    primary: '#A855F7', //purple-500
+    secondary: '#3b82f6', //blue-500
+    muted: '#A1A1AA', //zinc-400
     background: '#18181b', //zinc-900
+    danger: '#F43F5E', //rose-500
   },
   fontSizes: {
     body: 1 * REM,
