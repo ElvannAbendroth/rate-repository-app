@@ -1,8 +1,10 @@
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, Pressable } from 'react-native'
 import Constants from 'expo-constants'
 import Text from './ui/Text'
 import theme from '../utils/theme'
 import { Link } from 'react-router-native'
+import useSession from '../hooks/useSession'
+import useSignOut from '../hooks/useSignOut'
 
 const REM = theme.fontSizes.body
 
@@ -25,12 +27,14 @@ const styles = StyleSheet.create({
 })
 
 const AppBar = () => {
+  const { isAuthenticated } = useSession()
+
   return (
     <View style={styles.root}>
       <ScrollView horizontal>
         {/* ... */}
         <AppBarTab label="Repositories" to="/" />
-        <AppBarTab label="Sign In" to="/sign-in" />
+        {isAuthenticated ? <SignOutTab /> : <AppBarTab label="Sign In" to="/sign-in" />}
       </ScrollView>
     </View>
   )
@@ -38,12 +42,29 @@ const AppBar = () => {
 
 export default AppBar
 
-const AppBarTab = ({ label, to }) => {
+const AppBarTab = ({ label, to, ...props }) => {
   return (
-    <Link to={to}>
+    <Link to={to} {...props}>
       <Text bold style={styles.tabText}>
         {label}
       </Text>
     </Link>
+  )
+}
+
+const SignOutTab = () => {
+  const [signOut] = useSignOut()
+
+  const handlePress = () => {
+    console.log('pressed!')
+    signOut()
+  }
+
+  return (
+    <Pressable onPress={handlePress}>
+      <Text bold style={styles.tabText}>
+        Sign Out
+      </Text>
+    </Pressable>
   )
 }
