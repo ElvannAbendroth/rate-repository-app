@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     height: 0.5 * REM,
     width: 0.5 * REM,
-    backgroundColor: theme.colors.primary,
   },
   languageText: {
     color: theme.colors.muted,
@@ -57,6 +56,11 @@ const styles = StyleSheet.create({
 })
 
 const RepositoryItem = ({ entry }) => {
+  // eslint-disable-next-line no-prototype-builtins
+  const languageColor = theme.colors.brands[entry.language]
+    ? theme.colors.brands[entry.language]
+    : theme.colors.brands.DEFAULT
+
   return (
     <View style={styles.root}>
       <View style={styles.headerSection}>
@@ -73,7 +77,7 @@ const RepositoryItem = ({ entry }) => {
         {entry.description}
       </Text>
       <View style={styles.languageWrapper}>
-        <View style={styles.languageBadge}></View>
+        <View style={{ ...styles.languageBadge, backgroundColor: languageColor }}></View>
         <Text style={styles.languageText}>{entry.language}</Text>
       </View>
 

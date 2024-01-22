@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0.75 * REM,
     paddingVertical: REM,
     flex: 1,
+    marginBottom: 1.5 * REM,
   },
 })
 

@@ -10,6 +10,13 @@ const theme = {
     muted: '#A1A1AA', //zinc-400
     background: '#18181b', //zinc-900
     danger: '#F43F5E', //rose-500
+    brands: {
+      DEFAULT: '#A1A1AA', //zinc-400
+      TypeScript: '#3b82f6', //blue-500
+      Python: '#06B6D4', //cyan-500
+      Ruby: '#EF4444', //red-500
+      JavaScript: '#FACC15', //yellow-400
+    },
   },
   fontSizes: {
     body: 1 * REM,
