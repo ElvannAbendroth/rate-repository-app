@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   pageWrapper: {
     paddingHorizontal: 0.75 * REM,
     paddingVertical: REM,
+    flex: 1,
   },
 })
 
