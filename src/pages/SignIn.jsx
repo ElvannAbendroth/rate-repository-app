@@ -5,7 +5,6 @@ import theme from '../utils/theme'
 import FormikTextInput from '../components/ui/FormikTextInput'
 import * as yup from 'yup'
 import useSignIn from '../hooks/useSignIn'
-import { useState } from 'react'
 
 const REM = theme.fontSizes.body
 const styles = StyleSheet.create({
