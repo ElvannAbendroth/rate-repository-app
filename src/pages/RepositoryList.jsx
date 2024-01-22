@@ -1,7 +1,6 @@
 import { FlatList, View, StyleSheet } from 'react-native'
 import RepositoryItem from '../components/RepositoryItem'
 import theme from '../utils/theme'
-import { useEffect, useState } from 'react'
 import useRepositories from '../hooks/useRepositories'
 
 const REM = theme.fontSizes.body
