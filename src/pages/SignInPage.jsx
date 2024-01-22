@@ -35,7 +35,7 @@ const initialValues = {
   password: '',
 }
 
-const SignIn = () => {
+const SignInPage = () => {
   return (
     <View styles={styles.root}>
       <Text variant={'header'} style={{ marginBottom: REM }}>
@@ -85,4 +85,4 @@ const SignInForm = ({ onSubmit }) => {
   )
 }
 
-export default SignIn
+export default SignInPage

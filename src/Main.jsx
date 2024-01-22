@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native'
-import RepositoryList from './pages/RepositoryList'
+import RepositoryPage from './pages/RepositoryPage'
 import AppBar from './components/AppBar'
 import { Route, Routes, Navigate } from 'react-router-native'
-import SignIn from './pages/SignIn'
+import SignInPage from './pages/SignInPage'
 import theme from './utils/theme'
 
 const REM = theme.fontSizes.body
@@ -28,8 +28,8 @@ const Main = () => {
       <AppBar />
       <View style={styles.pageWrapper}>
         <Routes>
-          <Route path="/" element={<RepositoryList />} />
-          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/" element={<RepositoryPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </View>

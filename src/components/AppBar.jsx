@@ -56,7 +56,6 @@ const SignOutTab = () => {
   const [signOut] = useSignOut()
 
   const handlePress = () => {
-    console.log('pressed!')
     signOut()
   }
 
