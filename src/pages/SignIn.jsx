@@ -53,17 +53,17 @@ const validationSchema = yup.object().shape({
 })
 
 const FormikContext = () => {
-  const [token, setToken] = useState(null)
+  // const [token, setToken] = useState(null)
   // eslint-disable-next-line no-unused-vars
-  const [signIn, result] = useSignIn()
+  const [signIn, result, token] = useSignIn()
 
   const onSubmit = async values => {
     const { username, password } = values
 
     try {
       signIn(username, password)
-      console.log(result.data)
-      setToken(result.data.authenticate.accessToken)
+      console.log(token)
+      //setToken(result.data.authenticate.accessToken)
     } catch (error) {
       console.error(error)
     }
