@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   root: {
-    backgroundColor: theme.colors.foreground + '05', // sets to 2% opacity
+    backgroundColor: theme.colors.card + '', // sets to 2% opacity
     borderRadius: theme.borderRadius.lg,
     padding: 1 * REM,
   },

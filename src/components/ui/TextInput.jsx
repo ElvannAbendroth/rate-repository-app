@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 1 * REM,
     paddingVertical: 1.5 * REM,
-    backgroundColor: theme.colors.foreground + '05',
+    backgroundColor: theme.colors.card,
     borderRadius: theme.borderRadius.lg,
     color: theme.colors.muted,
     marginBottom: REM,

@@ -8,6 +8,8 @@ const theme = {
     primary: '#A855F7', //purple-500
     secondary: '#3b82f6', //blue-500
     muted: '#A1A1AA', //zinc-400
+    card: '#27272a77', //zinc-800
+    input: '#27272a', //zinc-800
     background: '#18181b', //zinc-900
     danger: '#F43F5E', //rose-500
     brands: {
