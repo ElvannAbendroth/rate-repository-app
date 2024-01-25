@@ -62,7 +62,7 @@ const RepositoryItem = ({ entry }) => {
     : theme.colors.brands.DEFAULT
 
   return (
-    <View style={styles.root}>
+    <View testID="repositoryItem" style={styles.root}>
       <View style={styles.headerSection}>
         <Image
           style={styles.profileImage}

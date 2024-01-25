@@ -1,10 +1,10 @@
-import { Pressable, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Text from '../components/ui/Text'
 import { Formik } from 'formik'
 import theme from '../utils/theme'
-import FormikTextInput from '../components/ui/FormikTextInput'
 import * as yup from 'yup'
 import useSignIn from '../hooks/useSignIn'
+import SignInForm from '../components/SignInForm'
 
 const REM = theme.fontSizes.body
 const styles = StyleSheet.create({
@@ -69,19 +69,6 @@ const FormikContext = () => {
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
       {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
-  )
-}
-
-const SignInForm = ({ onSubmit }) => {
-  return (
-    <View styles={{ display: 'flex', gap: REM }}>
-      <FormikTextInput name="username" placeholder="Username" />
-      <FormikTextInput name="password" placeholder="Password" secureTextEntry={true} />
-
-      <Pressable style={styles.button} onPress={onSubmit}>
-        <Text style={{ textAlign: 'center' }}>Login</Text>
-      </Pressable>
-    </View>
   )
 }
 
