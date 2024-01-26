@@ -32,7 +32,7 @@ const SignInForm = ({ onSubmit }) => {
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" secureTextEntry={true} />
 
-      <Pressable style={styles.button} onPress={onSubmit}>
+      <Pressable testID="submitButton" style={styles.button} onPress={onSubmit}>
         <Text style={{ textAlign: 'center' }}>Login</Text>
       </Pressable>
     </View>

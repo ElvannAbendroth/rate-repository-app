@@ -41,7 +41,7 @@ const SignInPage = () => {
       <Text variant={'header'} style={{ marginBottom: REM }}>
         Sign In
       </Text>
-      <FormikContext />
+      <SignInFormWrapper />
     </View>
   )
 }
@@ -51,7 +51,7 @@ const validationSchema = yup.object().shape({
   password: yup.string().required('Password is required'),
 })
 
-const FormikContext = () => {
+const SignInFormWrapper = () => {
   // eslint-disable-next-line no-unused-vars
   const [signIn, result] = useSignIn()
 
