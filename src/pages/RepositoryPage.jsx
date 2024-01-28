@@ -1,10 +1,23 @@
-import useRepositories from '../hooks/useRepositories'
-import RepositoryList from '../components/RepositoryList'
+import { View } from 'react-native'
+import Text from '../components/ui/Text'
+import { useLocation } from 'react-router-native'
+import useRepository from '../hooks/useRepository'
+import RepositoryItem from '../components/RepositoryItem'
+//import queryString from 'query-string'
 
 const RepositoryPage = () => {
-  const { repositories } = useRepositories()
+  const location = useLocation()
+  // eslint-disable-next-line no-undef
+  const searchParams = new URLSearchParams(location.search)
+  const userId = searchParams.get('userId')
+  const repository = useRepository(userId)
 
-  return <RepositoryList repositories={repositories} />
+  if (repository.repository === undefined) return <Text>...loading</Text>
+  return (
+    <View>
+      <RepositoryItem entry={repository.repository} isSinglePage={true} />
+    </View>
+  )
 }
 
 export default RepositoryPage
