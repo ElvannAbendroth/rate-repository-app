@@ -11,6 +11,8 @@ const theme = {
     card: '#27272a77', //zinc-800
     input: '#27272a', //zinc-800
     background: '#18181b', //zinc-900
+    success: '#10B981', //emerald-500
+    warning: '#F59E0B', //amber-500
     danger: '#F43F5E', //rose-500
     brands: {
       DEFAULT: '#A1A1AA', //zinc-400

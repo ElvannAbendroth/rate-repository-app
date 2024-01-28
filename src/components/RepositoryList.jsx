@@ -6,14 +6,13 @@ import { StyleSheet } from 'react-native'
 
 const REM = theme.fontSizes.body
 
-const styles = StyleSheet.create({
-  root: {},
-  separator: {
-    height: 0.75 * REM,
-  },
-})
-
-const ItemSeparator = () => <View style={styles.separator} />
+const ItemSeparator = () => (
+  <View
+    style={{
+      height: 0.75 * REM,
+    }}
+  />
+)
 
 const RepositoryList = ({ repositories }) => {
   const repositoryNodes = repositories ? repositories.edges.map(edge => edge.node) : []
