@@ -24,11 +24,9 @@ const RepositoryPage = () => {
   const userId = searchParams.get('userId')
   const repository = useRepository(userId)
   const reviews = useReviews(userId)
-  //console.log(reviews.reviews)
 
   if (repository.repository === undefined) return <Text>...loading repos</Text>
   if (reviews.reviews === undefined) return <Text>...loading reviews</Text>
-  //console.log(reviews.reviews)
 
   const reviewItems = reviews.reviews
 

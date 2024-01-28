@@ -2,7 +2,6 @@ import { FlatList, View } from 'react-native'
 import RepositoryItem from './RepositoryItem'
 
 import theme from '../utils/theme'
-import { StyleSheet } from 'react-native'
 
 const REM = theme.fontSizes.body
 
