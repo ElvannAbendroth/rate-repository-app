@@ -20,7 +20,6 @@ const useSignIn = () => {
           password: password,
         },
       })
-      //console.log(data.authenticate.accessToken)
       authStorage.setAccessToken(data.authenticate.accessToken)
       apolloClient.resetStore()
 
