@@ -13,14 +13,20 @@ const ItemSeparator = () => (
   />
 )
 
-const RepositoryList = ({ repositories, setOrderBy, setOrderDirection }) => {
+const RepositoryList = ({ repositories, setOrderBy, setOrderDirection, setSearchKeyword }) => {
   const repositoryNodes = repositories ? repositories.edges.map(edge => edge.node) : []
 
   return (
     <FlatList
       style={{ flex: 0 }}
       data={repositoryNodes}
-      ListHeaderComponent={<SortOrderPicker setOrderBy={setOrderBy} setOrderDirection={setOrderDirection} />}
+      ListHeaderComponent={
+        <SortOrderPicker
+          setOrderBy={setOrderBy}
+          setOrderDirection={setOrderDirection}
+          setSearchKeyword={setSearchKeyword}
+        />
+      }
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem entry={item} />}
     />

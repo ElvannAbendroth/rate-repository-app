@@ -6,6 +6,7 @@ const useRepositories = () => {
   const [repositories, setRepositories] = useState()
   const [orderBy, setOrderBy] = useState('CREATED_AT')
   const [orderDirection, setOrderDirection] = useState('DESC')
+  const [searchKeyword, setSearchKeyword] = useState('')
 
   // eslint-disable-next-line no-unused-vars
   const { data, loading } = useQuery(GET_REPOSITORIES, {
@@ -13,6 +14,7 @@ const useRepositories = () => {
     variables: {
       orderBy: orderBy,
       orderDirection: orderDirection,
+      searchKeyword: searchKeyword,
     },
   })
 
@@ -24,7 +26,14 @@ const useRepositories = () => {
     fetchRepositories()
   }, [data, orderBy, orderDirection])
 
-  return { repositories, loading, refetch: fetchRepositories, setOrderBy, setOrderDirection }
+  return {
+    repositories,
+    loading,
+    refetch: fetchRepositories,
+    setOrderBy,
+    setOrderDirection,
+    setSearchKeyword,
+  }
 }
 
 export default useRepositories
