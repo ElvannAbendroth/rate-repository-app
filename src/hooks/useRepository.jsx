@@ -6,7 +6,7 @@ const useRepository = repositoryId => {
   const [repository, setRepository] = useState()
 
   // eslint-disable-next-line no-unused-vars
-  const { data, error, loading } = useQuery(GET_REPOSITORY_BY_ID, {
+  const { data, loading } = useQuery(GET_REPOSITORY_BY_ID, {
     fetchPolicy: 'cache-and-network',
     variables: {
       repositoryId: repositoryId,

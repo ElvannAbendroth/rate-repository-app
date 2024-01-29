@@ -21,9 +21,9 @@ const RepositoryPage = () => {
   const location = useLocation()
   // eslint-disable-next-line no-undef
   const searchParams = new URLSearchParams(location.search)
-  const userId = searchParams.get('userId')
-  const repository = useRepository(userId)
-  const reviews = useReviews(userId)
+  const repositoryId = searchParams.get('repositoryId')
+  const repository = useRepository(repositoryId)
+  const reviews = useReviews(repositoryId)
 
   if (repository.repository === undefined) return <Text>...loading repos</Text>
   if (reviews.reviews === undefined) return <Text>...loading reviews</Text>

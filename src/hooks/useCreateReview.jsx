@@ -19,7 +19,7 @@ const useCreateReview = () => {
         },
       })
 
-      navigate(`/repository?userId=${data.createReview.repositoryId}`)
+      navigate(`/repository?repositoryId=${data.createReview.repositoryId}`)
     } catch (error) {
       console.error(error)
     }

@@ -67,7 +67,7 @@ const RepositoryItem = ({ entry, isSinglePage }) => {
   const navigate = useNavigate()
 
   return (
-    <Pressable onPress={() => navigate(`/repository?userId=${entry.id}`)}>
+    <Pressable onPress={() => navigate(`/repository?repositoryId=${entry.id}`)}>
       <View testID="repositoryItem" style={styles.root}>
         <View style={styles.headerSection}>
           <Image

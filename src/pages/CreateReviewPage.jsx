@@ -5,7 +5,6 @@ import theme from '../utils/theme'
 import * as yup from 'yup'
 
 import CreateReviewForm from '../components/CreateReviewForm'
-//import { useNavigate } from 'react-router-native'
 import useCreateReview from '../hooks/useCreateReview'
 
 const REM = theme.fontSizes.body
@@ -65,7 +64,6 @@ const validationSchema = yup.object().shape({
 })
 
 const ReviewFormWrapper = () => {
-  //const navigate = useNavigate()
   const { createReview } = useCreateReview()
 
   const onSubmit = async values => {
@@ -73,7 +71,6 @@ const ReviewFormWrapper = () => {
 
     try {
       createReview(ownerName, repositoryName, rating, text)
-      //navigate(`/repository?userId=${ownerName}.${repositoryName}`)
     } catch (error) {
       Alert.alert(`${error}`)
       console.error(error)
