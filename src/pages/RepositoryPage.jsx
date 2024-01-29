@@ -1,11 +1,11 @@
 import { FlatList, View } from 'react-native'
-import Text from '../components/ui/Text'
 import { useLocation } from 'react-router-native'
 import useRepository from '../hooks/useRepository'
 import RepositoryItem from '../components/RepositoryItem'
 import useReviews from '../hooks/useReviews'
 import theme from '../utils/theme'
 import ReviewItem from '../components/ReviewItem'
+import CardSkeleton from '../components/CardSkeleton'
 
 const REM = theme.fontSizes.body
 
@@ -25,8 +25,8 @@ const RepositoryPage = () => {
   const repository = useRepository(repositoryId)
   const reviews = useReviews(repositoryId)
 
-  if (repository.repository === undefined) return <Text>...loading repos</Text>
-  if (reviews.reviews === undefined) return <Text>...loading reviews</Text>
+  if (repository.repository === undefined) return <CardSkeleton />
+  if (reviews.reviews === undefined) return <CardSkeleton />
 
   const reviewItems = reviews.reviews
 

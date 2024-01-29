@@ -1,7 +1,9 @@
 import { StyleSheet, View } from 'react-native'
 import Text from '../components/ui/Text'
+import { Skeleton } from '@rneui/themed'
 
 import theme from '../utils/theme'
+import CardSkeleton from './CardSkeleton'
 
 const REM = theme.fontSizes.body
 
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
 })
 
 const ReviewItem = ({ entry }) => {
-  if (entry === undefined) return <Text>...loading</Text>
+  if (entry === undefined) return <CardSkeleton />
   const ratingColor =
     entry.rating < 61 ? theme.colors.danger : entry.rating < 71 ? theme.colors.warning : theme.colors.success
 
