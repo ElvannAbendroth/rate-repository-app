@@ -4,10 +4,7 @@ import { Formik } from 'formik'
 import theme from '../utils/theme'
 import * as yup from 'yup'
 
-import CreateReviewForm from '../components/CreateReviewForm'
-import useCreateReview from '../hooks/useCreateReview'
 import SignUpForm from '../components/SignUpForm'
-import useSignIn from '../hooks/useSignIn'
 import useSignUp from '../hooks/useSignUp'
 
 const REM = theme.fontSizes.body
@@ -35,9 +32,9 @@ const styles = StyleSheet.create({
 })
 
 const initialValues = {
-  username: 'elvann',
-  password: 'password',
-  confirmPassword: 'password',
+  username: '',
+  password: '',
+  confirmPassword: '',
 }
 
 const SignUpPage = () => {
