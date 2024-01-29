@@ -5,6 +5,7 @@ import theme from '../utils/theme'
 import { Link } from 'react-router-native'
 import useSession from '../hooks/useSession'
 import useSignOut from '../hooks/useSignOut'
+import { BookMarked, LogIn, LogOut, MessageSquare, Pencil, UserPlus } from 'lucide-react-native'
 
 const REM = theme.fontSizes.body
 
@@ -19,8 +20,10 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.foreground + '0A', //05 === 4% opacity
   },
   tabText: {
-    paddingVertical: 1 * REM,
-    paddingHorizontal: 0.75 * REM,
+    // display: 'flex',
+    // flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 
   // ...
@@ -32,17 +35,33 @@ const AppBar = () => {
   return (
     <View style={styles.root}>
       <ScrollView horizontal>
-        {/* ... */}
-        <AppBarTab label="Repositories" to="/" />
-
-        {isAuthenticated && <AppBarTab label="Create a Review" to="/create-review" />}
+        <AppBarTab label="Repositories" to="/" icon={BookMarked} />
+        {/* {isAuthenticated && <AppBarTab label="Create a Review" to="/create-review" />} */}
         {isAuthenticated ? (
-          <SignOutTab />
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <AppBarTab label="Create a Review" to="/create-review" icon={Pencil} />
+            <AppBarTab label="My Reviews" to="/my-reviews" icon={MessageSquare} />
+            <SignOutTab />
+          </View>
         ) : (
-          <>
-            <AppBarTab label="Sign In" to="/sign-in" />
-            <AppBarTab label="Sign Up" to="/sign-up" />
-          </>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <AppBarTab label="Sign In" to="/sign-in" icon={LogIn} />
+            <AppBarTab label="Sign Up" to="/sign-up" icon={UserPlus} />
+          </View>
         )}
       </ScrollView>
     </View>
@@ -51,12 +70,25 @@ const AppBar = () => {
 
 export default AppBar
 
-const AppBarTab = ({ label, to, ...props }) => {
+const AppBarTab = ({ label, to, icon, ...props }) => {
+  const Icon = icon
   return (
     <Link to={to} {...props}>
-      <Text bold style={styles.tabText}>
-        {label}
-      </Text>
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingVertical: 1 * REM,
+          paddingHorizontal: 0.75 * REM,
+        }}
+      >
+        {Icon && <Icon color={theme.colors.foreground} size={1.5 * REM} style={{ marginRight: 0.5 * REM }} />}
+        <Text bold style={styles.tabText}>
+          {label}
+        </Text>
+      </View>
     </Link>
   )
 }
@@ -69,7 +101,18 @@ const SignOutTab = () => {
   }
 
   return (
-    <Pressable onPress={handlePress}>
+    <Pressable
+      onPress={handlePress}
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 1 * REM,
+        paddingHorizontal: 0.75 * REM,
+      }}
+    >
+      <LogOut color={theme.colors.foreground} size={1.5 * REM} style={{ marginRight: 0.5 * REM }} />
       <Text bold style={styles.tabText}>
         Sign Out
       </Text>

@@ -7,6 +7,7 @@ import theme from './utils/theme'
 import RepositoryPage from './pages/RepositoryPage'
 import CreateReviewPage from './pages/CreateReviewPage'
 import SignUpPage from './pages/SignUpPage'
+import MyReviewsPage from './pages/MyReviewsPage'
 
 const REM = theme.fontSizes.body
 
@@ -36,6 +37,7 @@ const Main = () => {
           <Route path="/repository" element={<RepositoryPage />} />
           <Route path="/create-review" element={<CreateReviewPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/my-reviews" element={<MyReviewsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </View>
