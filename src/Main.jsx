@@ -1,10 +1,11 @@
 import { StyleSheet, View } from 'react-native'
-import RepositoryListPage from './pages/RepositoryListPage'
+import IndexPage from './pages/IndexPage'
 import AppBar from './components/AppBar'
 import { Route, Routes, Navigate } from 'react-router-native'
 import SignInPage from './pages/SignInPage'
 import theme from './utils/theme'
 import RepositoryPage from './pages/RepositoryPage'
+import CreateReviewPage from './pages/CreateReviewPage'
 
 const REM = theme.fontSizes.body
 
@@ -29,10 +30,11 @@ const Main = () => {
       <AppBar />
       <View style={styles.pageWrapper}>
         <Routes>
-          <Route path="/" element={<RepositoryListPage />} />
+          <Route path="/" element={<IndexPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/repository" element={<RepositoryPage />} />
+          <Route path="/create-review" element={<CreateReviewPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </View>
     </View>

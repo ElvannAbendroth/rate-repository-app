@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
 })
 
 const initialValues = {
-  username: '',
-  password: '',
+  username: 'kalle',
+  password: 'password',
 }
 
 const SignInPage = () => {

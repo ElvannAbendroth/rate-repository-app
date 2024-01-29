@@ -23,7 +23,7 @@ const useSignIn = () => {
       authStorage.setAccessToken(data.authenticate.accessToken)
       apolloClient.resetStore()
 
-      Alert.alert(`Welcome, ${username}!`, 'You successfully signed in!')
+      //Alert.alert(`Welcome, ${username}!`, 'You successfully signed in!')
       navigate('/')
     } catch (error) {
       console.error(error)
