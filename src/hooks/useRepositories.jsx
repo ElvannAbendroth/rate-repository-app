@@ -8,7 +8,7 @@ const useRepositories = () => {
   const [orderDirection, setOrderDirection] = useState('DESC')
 
   // eslint-disable-next-line no-unused-vars
-  const { data, error, loading } = useQuery(GET_REPOSITORIES, {
+  const { data, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
     variables: {
       orderBy: orderBy,

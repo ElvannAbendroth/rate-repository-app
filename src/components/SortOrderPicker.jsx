@@ -1,10 +1,9 @@
 import { Button } from '@rneui/base'
 import { View } from 'react-native'
-import Text from './ui/Text'
 import theme from '../utils/theme'
 import { useState } from 'react'
 import { Picker } from '@react-native-picker/picker'
-import { ArrowDown, ChevronDown, ChevronUp } from 'lucide-react-native'
+import { ChevronDown, ChevronUp } from 'lucide-react-native'
 
 const REM = theme.fontSizes.body
 
