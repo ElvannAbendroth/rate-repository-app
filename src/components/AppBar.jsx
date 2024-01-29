@@ -3,9 +3,9 @@ import Constants from 'expo-constants'
 import Text from './ui/Text'
 import theme from '../utils/theme'
 import { Link } from 'react-router-native'
-import useSession from '../hooks/useSession'
 import useSignOut from '../hooks/useSignOut'
 import { BookMarked, LogIn, LogOut, MessageSquare, Pencil, UserPlus } from 'lucide-react-native'
+import useCurrentUser from '../hooks/useCurrentUser'
 
 const REM = theme.fontSizes.body
 
@@ -19,24 +19,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: theme.colors.foreground + '0A', //05 === 4% opacity
   },
-  tabText: {
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
 
   // ...
 })
 
 const AppBar = () => {
-  const { isAuthenticated } = useSession()
+  const { isAuthenticated } = useCurrentUser()
 
   return (
     <View style={styles.root}>
       <ScrollView horizontal>
         <AppBarTab label="Repositories" to="/" icon={BookMarked} />
-        {/* {isAuthenticated && <AppBarTab label="Create a Review" to="/create-review" />} */}
+
         {isAuthenticated ? (
           <View
             style={{
@@ -113,9 +107,7 @@ const SignOutTab = () => {
       }}
     >
       <LogOut color={theme.colors.foreground} size={1.5 * REM} style={{ marginRight: 0.5 * REM }} />
-      <Text bold style={styles.tabText}>
-        Sign Out
-      </Text>
+      <Text bold>Sign Out</Text>
     </Pressable>
   )
 }

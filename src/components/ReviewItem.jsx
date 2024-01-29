@@ -1,9 +1,11 @@
 import { StyleSheet, View } from 'react-native'
 import Text from '../components/ui/Text'
-import { Skeleton } from '@rneui/themed'
+import { Button } from '@rneui/themed'
+import * as Linking from 'expo-linking'
 
 import theme from '../utils/theme'
 import CardSkeleton from './CardSkeleton'
+import { Github, X } from 'lucide-react-native'
 
 const REM = theme.fontSizes.body
 
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const ReviewItem = ({ entry }) => {
+const ReviewItem = ({ entry, showActions }) => {
   if (entry === undefined) return <CardSkeleton />
   const ratingColor =
     entry.rating < 61 ? theme.colors.danger : entry.rating < 71 ? theme.colors.warning : theme.colors.success
@@ -63,6 +65,26 @@ const ReviewItem = ({ entry }) => {
         </View>
       </View>
       <Text style={{ color: theme.colors.muted }}>{entry.text}</Text>
+      {showActions && (
+        <View>
+          <Button
+            color="primary"
+            style={{ paddingTop: 1 * REM }}
+            onPress={() => Linking.openURL(entry.repository.url)}
+            icon={<Github size={1.5 * REM} style={{ color: theme.colors.foreground, paddingRight: 3 * REM }} />}
+          >
+            View Repository
+          </Button>
+          <Button
+            color="secondary"
+            style={{ paddingTop: 1 * REM }}
+            // onPress={() => Linking.openURL(entry.url)}
+            icon={<X size={1.5 * REM} style={{ color: theme.colors.foreground, paddingRight: 3 * REM }} />}
+          >
+            Delete Review
+          </Button>
+        </View>
+      )}
     </View>
   )
 }
