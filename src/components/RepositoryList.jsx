@@ -1,11 +1,6 @@
-import { FlatList, Pressable, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import RepositoryItem from './RepositoryItem'
-import { Picker } from '@react-native-picker/picker'
-
 import theme from '../utils/theme'
-import Text from './ui/Text'
-import { Button } from '@rneui/themed'
-import { useState } from 'react'
 import SortOrderPicker from './SortOrderPicker'
 
 const REM = theme.fontSizes.body
