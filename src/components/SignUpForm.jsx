@@ -34,7 +34,7 @@ const SignUpForm = ({ onSubmit }) => {
       <FormikTextInput name="confirmPassword" placeholder="Confirm Password" secureTextEntry={true} />
 
       <Pressable testID="submitButton" style={styles.button} onPress={onSubmit}>
-        <Text style={{ textAlign: 'center' }}>Login</Text>
+        <Text style={{ textAlign: 'center' }}>Sign Up</Text>
       </Pressable>
     </View>
   )
