@@ -5,7 +5,7 @@ import theme from '../utils/theme'
 import * as yup from 'yup'
 
 import CreateReviewForm from '../components/CreateReviewForm'
-import useCreateReview from '../hooks/useCreateReview'
+import useReview from '../hooks/useReview'
 
 const REM = theme.fontSizes.body
 const styles = StyleSheet.create({
@@ -64,7 +64,7 @@ const validationSchema = yup.object().shape({
 })
 
 const ReviewFormWrapper = () => {
-  const { createReview } = useCreateReview()
+  const { createReview } = useReview()
 
   const onSubmit = async values => {
     const { ownerName, repositoryName, rating, text } = values

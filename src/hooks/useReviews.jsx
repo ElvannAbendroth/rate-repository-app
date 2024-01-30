@@ -5,8 +5,7 @@ import { useQuery } from '@apollo/client'
 const useReviews = repositoryId => {
   const [reviews, setReviews] = useState()
 
-  // eslint-disable-next-line no-unused-vars
-  const { data, error, loading } = useQuery(GET_REVIEWS_BY_ID, {
+  const { data, loading } = useQuery(GET_REVIEWS_BY_ID, {
     fetchPolicy: 'cache-and-network',
     variables: {
       repositoryId: repositoryId,

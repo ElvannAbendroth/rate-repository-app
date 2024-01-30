@@ -2,7 +2,6 @@ import { FlatList, View } from 'react-native'
 import useCurrentUser from '../hooks/useCurrentUser'
 import ReviewItem from '../components/ReviewItem'
 import theme from '../utils/theme'
-import Text from '../components/ui/Text'
 
 const REM = theme.fontSizes.body
 
@@ -16,10 +15,8 @@ const ItemSeparator = () => (
 
 const MyReviewsPage = () => {
   const { reviews, currentUser } = useCurrentUser(true)
-  console.log(reviews[0].repository.url)
 
   return (
-    // <Text>hello</Text>
     <FlatList
       data={reviews}
       renderItem={({ item }) => (

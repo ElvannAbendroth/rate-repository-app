@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import Text from '../components/ui/Text'
 import { Button } from '@rneui/themed'
 import * as Linking from 'expo-linking'
@@ -6,6 +6,8 @@ import * as Linking from 'expo-linking'
 import theme from '../utils/theme'
 import CardSkeleton from './CardSkeleton'
 import { Github, X } from 'lucide-react-native'
+import useReview from '../hooks/useReview'
+import { useNavigate } from 'react-router-native'
 
 const REM = theme.fontSizes.body
 
@@ -46,11 +48,33 @@ const styles = StyleSheet.create({
 })
 
 const ReviewItem = ({ entry, showActions }) => {
+  const navigate = useNavigate()
+  const { deleteReview } = useReview()
+
   if (entry === undefined) return <CardSkeleton />
   const ratingColor =
     entry.rating < 61 ? theme.colors.danger : entry.rating < 71 ? theme.colors.warning : theme.colors.success
 
   const createdAtFormatted = new Date(entry.createdAt).toDateString()
+
+  const handleReviewDelete = () => {
+    Alert.alert('Delete Review', 'Do you really want to delete this review?  This action is irreversible.', [
+      {
+        text: 'Yes, delete this review.',
+        onPress: () => {
+          deleteReview(entry.id)
+          navigate('/')
+        },
+        style: 'destructive',
+      },
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+    ])
+    //Alert.alert('boo!')
+  }
+
   return (
     <View style={styles.root}>
       <View style={styles.headerSection}>
@@ -59,18 +83,24 @@ const ReviewItem = ({ entry, showActions }) => {
         </View>
         <View>
           <Text style={styles.nameText}>{entry.user.username}</Text>
+          {showActions && (
+            <Text style={{ paddingTop: 0.5 * REM, color: theme.colors.foreground }}>{entry.repository.fullName}</Text>
+          )}
           <Text style={{ paddingTop: 0.5 * REM }} muted>
             {createdAtFormatted}
           </Text>
         </View>
       </View>
-      <Text style={{ color: theme.colors.muted }}>{entry.text}</Text>
+      <Text variant="large" style={{ color: theme.colors.muted }}>
+        {entry.text}
+      </Text>
+
       {showActions && (
         <View>
           <Button
             color="primary"
             style={{ paddingTop: 1 * REM }}
-            onPress={() => Linking.openURL(entry.repository.url)}
+            onPress={() => navigate(`/repository?repositoryId=${entry.repository.id}`)}
             icon={<Github size={1.5 * REM} style={{ color: theme.colors.foreground, paddingRight: 3 * REM }} />}
           >
             View Repository
@@ -78,7 +108,7 @@ const ReviewItem = ({ entry, showActions }) => {
           <Button
             color="secondary"
             style={{ paddingTop: 1 * REM }}
-            // onPress={() => Linking.openURL(entry.url)}
+            onPress={handleReviewDelete}
             icon={<X size={1.5 * REM} style={{ color: theme.colors.foreground, paddingRight: 3 * REM }} />}
           >
             Delete Review
