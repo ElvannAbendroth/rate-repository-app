@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
 })
 
 const initialValues = {
-  ownerName: 'elvannabendroth',
-  repositoryName: 'everything-music',
-  rating: '99',
-  text: 'Great!',
+  ownerName: '',
+  repositoryName: '',
+  rating: '',
+  text: '',
 }
 
 const CreateReviewPage = () => {
