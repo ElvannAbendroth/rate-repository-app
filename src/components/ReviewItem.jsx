@@ -1,7 +1,6 @@
 import { Alert, StyleSheet, View } from 'react-native'
 import Text from '../components/ui/Text'
 import { Button } from '@rneui/themed'
-import * as Linking from 'expo-linking'
 
 import theme from '../utils/theme'
 import CardSkeleton from './CardSkeleton'
