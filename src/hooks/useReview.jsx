@@ -2,6 +2,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_REVIEW, DELETE_REVIEW } from '../graphql/mutations'
 
 import { useNavigate } from 'react-router-native'
+import { Alert } from 'react-native'
 
 const useReview = () => {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ const useReview = () => {
         },
       })
     } catch (error) {
-      console.log(error)
+      Alert.alert(error)
     }
   }
 

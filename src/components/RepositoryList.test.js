@@ -1,4 +1,3 @@
-import { Text, View } from 'react-native'
 import { render, screen, within } from '@testing-library/react-native'
 import RepositoryList from './RepositoryList'
 

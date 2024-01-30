@@ -8,24 +8,30 @@ const useRepositories = () => {
   const [orderDirection, setOrderDirection] = useState('DESC')
   const [searchKeyword, setSearchKeyword] = useState('')
 
-  const itemsPerPage = 5
+  const variables = { orderBy, orderDirection, searchKeyword, first: 6 }
 
-  const { data, loading } = useQuery(GET_REPOSITORIES, {
+  const { data, loading, fetchMore } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
-    variables: {
-      orderBy: orderBy,
-      orderDirection: orderDirection,
-      searchKeyword: searchKeyword,
-      first: itemsPerPage,
-      after: undefined,
-    },
+    variables: variables,
   })
+
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage
+
+    if (!canFetchMore) {
+      return
+    }
+
+    fetchMore({
+      variables: {
+        ...variables,
+        after: data.repositories.pageInfo.endCursor,
+      },
+    })
+  }
 
   const fetchRepositories = async () => {
     setRepositories(data?.repositories)
-    //console.log(data.repositories.pageInfo)
-    const { endCursor, startCursor, hasNextPage } = data.repositories.pageInfo
-    console.log('START:' + startCursor, 'END:' + endCursor, 'hasNextPage:' + hasNextPage)
   }
 
   useEffect(() => {
@@ -36,6 +42,7 @@ const useRepositories = () => {
     repositories,
     loading,
     refetch: fetchRepositories,
+    fetchMore: handleFetchMore,
     setOrderBy,
     setOrderDirection,
     setSearchKeyword,

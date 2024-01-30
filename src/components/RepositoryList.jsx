@@ -2,6 +2,7 @@ import { FlatList, View } from 'react-native'
 import RepositoryItem from './RepositoryItem'
 import theme from '../utils/theme'
 import SortOrderPicker from './SortOrderPicker'
+import { useState } from 'react'
 
 const REM = theme.fontSizes.body
 
@@ -13,8 +14,17 @@ const ItemSeparator = () => (
   />
 )
 
-const RepositoryList = ({ repositories, setOrderBy, setOrderDirection, setSearchKeyword }) => {
+const RepositoryList = ({ repositories, setOrderBy, setOrderDirection, setSearchKeyword, onEndReach }) => {
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false)
   const repositoryNodes = repositories ? repositories.edges.map(edge => edge.node) : []
+
+  const handleEndReached = () => {
+    if (!initialLoadComplete) {
+      // Ignore end reached event during initial load
+      return
+    }
+    onEndReach()
+  }
 
   return (
     <FlatList
@@ -29,6 +39,9 @@ const RepositoryList = ({ repositories, setOrderBy, setOrderDirection, setSearch
       }
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem entry={item} />}
+      onEndReached={handleEndReached}
+      onEndReachedThreshold={0.5}
+      onContentSizeChange={() => setInitialLoadComplete(true)} // Mark initial load complete when content size changes
     />
   )
 }
